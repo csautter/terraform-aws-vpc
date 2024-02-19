@@ -614,6 +614,11 @@ output "vpc_flow_log_deliver_cross_account_role" {
   value       = try(aws_flow_log.this[0].deliver_cross_account_role, null)
 }
 
+output "vpc_flow_log_enabled" {
+  description = "Is the flow log enabled"
+  value       = local.enable_flow_log
+}
+
 ################################################################################
 # Static values (arguments)
 ################################################################################

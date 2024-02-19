@@ -16,7 +16,8 @@ locals {
   )
 
   # Use `local.vpc_id` to give a hint to Terraform that subnets should be deleted before secondary CIDR blocks can be free!
-  vpc_id = try(aws_vpc_ipv4_cidr_block_association.this[0].vpc_id, aws_vpc.this[0].id, "")
+  # use input vpc_id if create_vpc is false
+  vpc_id = (var.create_vpc == false) && (var.vpc_id != null) ? var.vpc_id : try(aws_vpc_ipv4_cidr_block_association.this[0].vpc_id, aws_vpc.this[0].id, "")
 
   create_vpc = var.create_vpc && var.putin_khuylo
 }

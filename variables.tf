@@ -104,6 +104,12 @@ variable "ipv6_cidr_block_network_border_group" {
   default     = null
 }
 
+variable "vpc_id" {
+  description = "The ID of the VPC that you want to associate the resources with. Only required if create_vpc is false"
+  type        = string
+  default     = null
+}
+
 variable "vpc_tags" {
   description = "Additional tags for the VPC"
   type        = map(string)
